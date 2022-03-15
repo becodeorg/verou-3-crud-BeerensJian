@@ -30,7 +30,9 @@ function pre_r($array)
 // Load you classes
 require_once 'config.php';
 require_once 'classes/DatabaseManager.php';
-require_once 'classes/CardRepository.php';
+require_once 'classes/MiceRepository.php';
+
+whatIsHappening();
 
 $databaseManager = new DatabaseManager($config['host'], $config['user'], $config['password'], $config['dbname']);
 $databaseManager->connect();
@@ -50,7 +52,7 @@ $action = $_GET['action'] ?? null;
 // This system will help you to only execute the code you want, instead of all of it (or complex if statements)
 switch ($action) {
     case 'create':
-        create();
+        create($databaseManager);
         break;
     default:
         overview();
@@ -64,8 +66,17 @@ function overview()
     require 'overview.php';
 }
 
-function create()
+function create(DatabaseManager $database)
 {
     // TODO: provide the create logic
+    $sql = "INSERT INTO mice(name, price, weight, brand) VALUES ('{$_GET['name']}', {$_GET['price']}, {$_GET['weight']}, '{$_GET['brand']}')";
+    try {
+        $database->connection->exec($sql);
+        echo "Entry Created Succesfully";
+    } catch (PDOException $e) {
+        echo "<br>" . $e->getMessage();
+    }
+
+
 }
 // dddd

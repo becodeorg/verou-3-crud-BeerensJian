@@ -19,14 +19,17 @@
 
 
 <form action="" method="get">
+    <h3>Add a mouse to the database:</h3>
     <label for="mouseName">Name of the Mouse: </label>
     <input type="text" name="name" id="mouseName">
-    <label for="mouseName">Price : </label>
-    <input type="text" name="name" id="mouseName">
-    <label for="mouseName">Weight: </label>
-    <input type="text" name="name" id="mouseName">
-    <label for="mouseName">Brand: </label>
-    <input type="text" name="name" id="mouseName">
+    <label for="mousePrice">Price : </label>
+    <input type="text" name="price" id="mousePrice">
+    <label for="mouseWeight">Weight: </label>
+    <input type="text" name="weight" id="mouseWeight">
+    <label for="mouseBrand">Brand: </label>
+    <input type="text" name="brand" id="mouseBrand">
+    <br>
+    <input type="submit" name="action" value="create">
 </form>
 
 </body>
