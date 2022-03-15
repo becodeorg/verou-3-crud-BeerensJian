@@ -3,7 +3,7 @@
 // This class is focussed on dealing with queries for one type of data
 // That allows for easier re-using and it's rather easy to find all your queries
 // This technique is called the repository pattern
-class CardRepository
+class MiceRepository
 {
     private DatabaseManager $databaseManager;
 

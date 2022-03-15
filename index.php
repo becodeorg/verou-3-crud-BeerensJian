@@ -18,8 +18,8 @@ $databaseManager->connect();
 
 // This example is about a Pokémon card collection
 // Update the naming if you'd like to work with another collection
-$cardRepository = new CardRepository($databaseManager);
-$cards = $cardRepository->get();
+$MiceRepository = new MiceRepository($databaseManager);
+$mice = $MiceRepository->get();
 
 // Get the current action to execute
 // If nothing is specified, it will remain empty (home should be loaded)
@@ -29,10 +29,10 @@ $action = $_GET['action'] ?? null;
 // This system will help you to only execute the code you want, instead of all of it (or complex if statements)
 switch ($action) {
     case 'create':
-        $this->create();
+        create();
         break;
     default:
-        $this->overview();
+        overview();
         break;
 }
 
