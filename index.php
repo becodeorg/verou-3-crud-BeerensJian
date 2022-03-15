@@ -2,11 +2,30 @@
 
 // Require the correct variable type to be used (no auto-converting)
 declare (strict_types = 1);
-
+session_start();
 // Show errors so we get helpful information
 ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
+
+function whatIsHappening() {
+    echo '<h2>$_GET</h2>';
+    pre_r($_GET);
+    echo '<h2>$_POST</h2>';
+    pre_r($_POST);
+    echo '<h2>$_COOKIE</h2>';
+    pre_r($_COOKIE);
+    echo '<h2>$_SESSION</h2>';
+    pre_r($_SESSION);
+
+}
+
+function pre_r($array)
+{
+    echo '<pre>';
+    print_r($array);
+    echo '</pre>';
+}
 
 // Load you classes
 require_once 'config.php';
@@ -20,6 +39,8 @@ $databaseManager->connect();
 // Update the naming if you'd like to work with another collection
 $MiceRepository = new MiceRepository($databaseManager);
 $mice = $MiceRepository->get();
+$_SESSION["mice"] = $mice;
+
 
 // Get the current action to execute
 // If nothing is specified, it will remain empty (home should be loaded)

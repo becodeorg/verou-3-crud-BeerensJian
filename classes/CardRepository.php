@@ -28,10 +28,19 @@ class MiceRepository
     public function get(): array
     {
         // TODO: replace dummy data by real one
-        return [
-            ['name' => 'dummy one'],
-            ['name' => 'dummy two'],
-        ];
+        //return [
+            //['name' => 'dummy one'],
+            //['name' => 'dummy two'],
+        //];
+        // Make an SQL statement
+        $sql = "SELECT name,price FROM mice";
+        // Execute the query and get the result
+        $result = $this->databaseManager->connection->query($sql, PDO::FETCH_ASSOC);
+        // fetch the rows as an array
+        return $result->fetchAll();
+
+
+
 
         // We get the database connection first, so we can apply our queries with it
         // return $this->databaseManager->connection-> (runYourQueryHere)
