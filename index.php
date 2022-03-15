@@ -72,7 +72,7 @@ function create(DatabaseManager $database)
     $sql = "INSERT INTO mice(name, price, weight, brand) VALUES ('{$_GET['name']}', {$_GET['price']}, {$_GET['weight']}, '{$_GET['brand']}')";
     try {
         $database->connection->exec($sql);
-        echo "Entry Created Succesfully";
+        echo "Entry Created Successfully";
     } catch (PDOException $e) {
         echo "<br>" . $e->getMessage();
     }
