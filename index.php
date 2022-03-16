@@ -55,16 +55,14 @@ switch ($action) {
         create($databaseManager);
         break;
     case 'edit':
-        if (!empty($GET["id"])) {
-            // When you click on submit in the edit page the GET['id'] will be set
-            // So you will execute the change
-
-        } else {
             // When clicked on edit button first time go to Edit Page with the data filled in the fields so it's easier to edit
             $miceToEdit = $MiceRepository->getUpdateData();
             pre_r($MiceRepository->getUpdateData());
             showEditpage($miceToEdit);
-        }
+        break;
+    case 'update':
+        $MiceRepository ->update(intval($_GET["editID"]), $_GET["editName"],floatval($_GET["editPrice"]) , intval($_GET["editWeight"]), $_GET["editBrand"]);
+        header('Location: index.php');
         break;
     default:
         overview();

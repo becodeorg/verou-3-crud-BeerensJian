@@ -52,6 +52,19 @@ class MiceRepository
         return $this->databaseManager->connection->query($fetchSQL, PDO::FETCH_ASSOC)->fetchAll();
     }
 
+    public function update(int $idToUpdate, string $newName, float $newPrice, int $newWeight, string $newBrand) : void
+    {
+
+        try {
+            $sql = "UPDATE mice SET name='{$newName}', price={$newPrice}, weight={$newWeight}, brand='{$newBrand}' WHERE id={$idToUpdate}";
+            $this->databaseManager->connection->exec($sql);
+
+        } catch (PDOException $e) {
+            echo "<br>" . $e ->getMessage();
+        }
+
+    }
+
     public function delete(): void
     {
 
