@@ -13,7 +13,7 @@
 
 <ul>
     <?php foreach ($_SESSION["mice"] as $mouse) : ?>
-        <li><?= $mouse['name'] . " : " . $mouse["price"] . "$" ?></li>
+        <li><?= $mouse['name'] . " : " . $mouse["price"] . "$" ?><a href="index.php?action=edit&id=<?=$mouse['id']?>">Edit</a></li>
     <?php endforeach; ?>
 </ul>
 

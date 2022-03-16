@@ -33,7 +33,7 @@ class MiceRepository
             //['name' => 'dummy two'],
         //];
         // Make an SQL statement
-        $sql = "SELECT name,price FROM mice";
+        $sql = "SELECT * FROM mice";
         // Execute the query and get the result
         $result = $this->databaseManager->connection->query($sql, PDO::FETCH_ASSOC);
         // fetch the rows as an array
@@ -46,9 +46,10 @@ class MiceRepository
         // return $this->databaseManager->connection-> (runYourQueryHere)
     }
 
-    public function update(): void
+    public function getUpdateData(): array
     {
-
+        $fetchSQL = "SELECT * FROM mice WHERE id={$_GET['id']}";
+        return $this->databaseManager->connection->query($fetchSQL, PDO::FETCH_ASSOC)->fetchAll();
     }
 
     public function delete(): void
