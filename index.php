@@ -52,7 +52,7 @@ $action = $_GET['action'] ?? null;
 // This system will help you to only execute the code you want, instead of all of it (or complex if statements)
 switch ($action) {
     case 'create':
-        create($databaseManager);
+        $MiceRepository->create();
         break;
     case 'edit':
             // When clicked on edit button first time go to Edit Page with the data filled in the fields so it's easier to edit
@@ -80,19 +80,6 @@ function overview()
     require 'overview.php';
 }
 
-function create(DatabaseManager $database)
-{
-    // TODO: provide the create logic
-    $sql = "INSERT INTO mice (name, price, weight, brand) VALUES ('{$_GET['name']}', {$_GET['price']}, {$_GET['weight']}, '{$_GET['brand']}')";
-    try {
-        $database->connection->exec($sql);
-        echo "Entry Created Successfully";
-    } catch (PDOException $e) {
-        echo "<br>" . $e->getMessage();
-    }
-
-
-}
 function showEditpage($miceToEdit) {
 
 

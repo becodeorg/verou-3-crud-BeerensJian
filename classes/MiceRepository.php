@@ -15,7 +15,13 @@ class MiceRepository
 
     public function create(): void
     {
-
+        $sql = "INSERT INTO mice (name, price, weight, brand) VALUES ('{$_GET['name']}', {$_GET['price']}, {$_GET['weight']}, '{$_GET['brand']}')";
+        try {
+            $this->databaseManager->connection->exec($sql);
+            echo "Entry Created Successfully";
+        } catch (PDOException $e) {
+            echo "<br>" . $e->getMessage();
+        }
     }
 
     // Get one

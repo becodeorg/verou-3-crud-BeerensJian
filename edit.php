@@ -11,7 +11,7 @@
 <h1>Edit the entry</h1>
 <form action="index.php" method="get">
     <label for="editID">ID:</label>
-    <input disabled type="text" name="editID" id="editID" value="<?= $miceToEdit[0]['id'] ?>">
+    <input readonly type="text" name="editID" id="editID" value="<?= $miceToEdit[0]['id'] ?>">
     <label for="editName">Name:</label>
     <input type="text" name="editName" id="editName" value="<?= $miceToEdit[0]['name'] ?>">
     <label for="editPrice">Price:</label>
