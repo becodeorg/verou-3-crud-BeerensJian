@@ -64,6 +64,10 @@ switch ($action) {
         $MiceRepository ->update(intval($_GET["editID"]), $_GET["editName"],floatval($_GET["editPrice"]) , intval($_GET["editWeight"]), $_GET["editBrand"]);
         header('Location: index.php');
         break;
+    case 'delete':
+        $MiceRepository -> delete();
+        header('Location: index.php');
+        break;
     default:
         overview();
         break;

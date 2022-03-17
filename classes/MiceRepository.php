@@ -67,7 +67,12 @@ class MiceRepository
 
     public function delete(): void
     {
-
+        try {
+            $sql = "DELETE FROM mice WHERE id={$_GET["id"]}";
+            $this->databaseManager->connection->exec($sql);
+        } catch (PDOException $e) {
+            echo "<br>" . $e->getMessage();
+        }
     }
 
 }
